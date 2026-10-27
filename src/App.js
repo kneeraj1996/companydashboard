@@ -1,24 +1,76 @@
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Body } from "./components";
+import Home from "./screens/Home/Home";
+import appStore from "./utils/appStore";
+import { Provider } from "react-redux";
+import Profile from "./screens/Profile/Profile";
+import Directory from "./screens/Directory/Directory";
+import HolidayCalendar from "./screens/Holiday/HolidayCalendar";
+import JobOpeningList from "./screens/Refer/JobOpeningList";
+import CreateDSR from "./screens/DSR/CreateDSR";
+import MyLeaves from "./screens/Leave/MyLeaves";
+import LunchCoupon from "./screens/Food/LunchCoupon";
+import ReferCandidate from "./screens/Refer/ReferCandidate";
+import Auth from './screens/Auth/Auth';
 
 function App() {
+
+  const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <Body />,
+    children: [
+      {
+        index: true,
+        element: <Auth />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/directory",
+        element: <Directory />,
+      },
+       {
+        path: "/holidayCalendar",
+        element: <HolidayCalendar />,
+      },
+      {
+        path: "/jobOpeningList",
+        element: <JobOpeningList />,
+      },
+      {
+        path: "/createDsr",
+        element: <CreateDSR />,
+      },
+      {
+        path: "/MyLeaves",
+        element: <MyLeaves />,
+      },
+       {
+        path: "/LunchCoupon",
+        element: <LunchCoupon />,
+      },
+      {
+        path: "/ReferCandidate",
+        element: <ReferCandidate />,
+      },
+    ],
+  },
+]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <Provider store={appStore}>
+      <div>
+      
+        <RouterProvider router={appRouter} />
+      </div>
+    </Provider>
   );
 }
 

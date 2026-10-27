@@ -1,0 +1,175 @@
+.lunch-coupon-page {
+  box-sizing: border-box;
+  display: flex;
+  height: calc(100vh - 5rem);
+  min-height: 28rem;
+  flex-direction: column;
+  padding: 1.25rem;
+  overflow: auto;
+  background: #f3f4f6;
+}
+
+.lunch-coupon-calendar {
+  display: flex;
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+}
+
+.lunch-weekday-row {
+  display: grid;
+  flex: 0 0 auto;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  padding-bottom: 0.5rem;
+  color: #4b5563;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.lunch-weekday-heading {
+  padding: 0.5rem 0.25rem;
+}
+
+.lunch-date-grid {
+  display: grid;
+  min-height: 0;
+  flex: 1;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  grid-template-rows: repeat(var(--week-count), minmax(6rem, 1fr));
+  gap: 0.5rem;
+}
+
+.lunch-date-box {
+  position: relative;
+  box-sizing: border-box;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  min-height: 6rem;
+  place-items: center;
+  overflow: hidden;
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #1f2937;
+  cursor: pointer;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.lunch-date-box:hover,
+.lunch-date-box:focus-within {
+  border-color: #60a5fa;
+  box-shadow: 0 4px 12px rgb(37 99 235 / 12%);
+}
+
+.lunch-date-checkbox {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  width: 1rem;
+  height: 1rem;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.lunch-date-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lunch-date-box-today {
+  border: 2px solid #3b82f6;
+  background: #eff6ff;
+}
+
+.lunch-date-box-past {
+  border-color: #d1d5db;
+  background: #e5e7eb;
+  color: #6b7280;
+  cursor: default;
+}
+
+.lunch-date-box-weekend {
+  border-color: #fecaca;
+  background: #fecaca;
+}
+
+.lunch-date-box-purchased {
+  border-color: #86efac;
+  background: #bbf7d0;
+}
+
+.lunch-date-menu-container {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+}
+
+.lunch-date-menu-button {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 9999px;
+  color: #374151;
+}
+
+.lunch-date-menu-button:hover,
+.lunch-date-menu-button:focus-visible {
+  background: rgb(255 255 255 / 70%);
+}
+
+.lunch-date-weekday {
+  color: #6b7280;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.lunch-date-number {
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.lunch-date-badge {
+  border-radius: 9999px;
+  background: #dbeafe;
+  padding: 0.2rem 0.55rem;
+  color: #1d4ed8;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .lunch-coupon-page {
+    min-height: calc(100vh - 5rem);
+    padding: 0.75rem;
+  }
+
+  .lunch-date-grid {
+    gap: 0.25rem;
+  }
+
+  .lunch-date-box {
+    min-height: 4.5rem;
+    padding: 0.35rem;
+  }
+
+  .lunch-date-checkbox {
+    top: 0.25rem;
+    right: 0.25rem;
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+
+  .lunch-date-weekday {
+    font-size: 0.6rem;
+  }
+}
